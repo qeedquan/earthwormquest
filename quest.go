@@ -232,9 +232,9 @@ func (c *Game) Event() {
 		case sdl.WindowEvent:
 			switch ev.Event {
 			case sdl.WINDOWEVENT_RESIZED:
-				game.Width = int(ev.Data[0])
-				game.Height = int(ev.Data[1])
-				gl.Viewport(0, 0, int32(game.Width), int32(game.Height))
+				c.Width = int(ev.Data[0])
+				c.Height = int(ev.Data[1])
+				gl.Viewport(0, 0, int32(c.Width), int32(c.Height))
 			}
 		}
 	}
@@ -245,7 +245,7 @@ func (c *Game) prepareDraw() {
 
 	gl.MatrixMode(gl.PROJECTION)
 	gl.LoadIdentity()
-	gluPerspective(30, float64(game.Width)/float64(game.Height), 1, 200)
+	gluPerspective(30, float64(c.Width)/float64(c.Height), 1, 200)
 	gl.MatrixMode(gl.MODELVIEW)
 	gl.LoadIdentity()
 
